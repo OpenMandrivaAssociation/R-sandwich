@@ -10,20 +10,16 @@ Group:            Sciences/Mathematics
 License:          GPL-2
 URL:              http://cran.r-project.org/web/packages/%{packname}/index.html
 Source0:          http://cran.r-project.org/src/contrib/%{packname}_2.2-9.tar.gz
-Requires:         R-stats R-zoo R-stats
-%if %{with bootstrap}
-Requires:         R-car R-lmtest R-survival R-MASS R-scatterplot3d
-%else
-Requires:         R-car R-lmtest R-strucchange R-AER R-survival R-MASS
+Requires:         R-stats R-zoo R-stats R-car R-lmtest R-survival R-MASS
 Requires:         R-scatterplot3d
+%if %{without bootstrap}
+Requires:         R-strucchange R-AER
 %endif
-BuildRequires:    R-devel Rmath-devel texlive-collection-latex R-stats R-zoo
-BuildRequires:    R-stats
-%if %{with bootstrap}
-BuildRequires:    R-car R-lmtest R-survival R-MASS R-scatterplot3d
-%else
-BuildRequires:    R-car R-lmtest R-strucchange R-AER R-survival R-MASS
-BuildRequires:    R-scatterplot3d
+BuildRequires:    R-devel Rmath-devel texlive-collection-latex
+BuildRequires:    R-stats R-zoo R-stats R-car R-lmtest R-survival R-MASS
+BuildRequires:     R-scatterplot3d
+%if %{without bootstrap}
+BuildRequires:    R-strucchange R-AER
 %endif
 
 %description
