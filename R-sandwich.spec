@@ -3,13 +3,13 @@
 %global rlibdir  %{_libdir}/R/library
 
 Name:             R-%{packname}
-Version:          2.2_9
-Release:          2
+Version:          2.2.10
+Release:          1
 Summary:          Robust Covariance Matrix Estimators
 Group:            Sciences/Mathematics
 License:          GPL-2
 URL:              http://cran.r-project.org/web/packages/%{packname}/index.html
-Source0:          http://cran.r-project.org/src/contrib/%{packname}_2.2-9.tar.gz
+Source0:          http://cran.r-project.org/src/contrib/sandwich_2.2-10.tar.gz
 Requires:         R-stats R-zoo R-stats R-car R-lmtest R-survival R-MASS
 Requires:         R-scatterplot3d
 %if %{without bootstrap}
@@ -55,3 +55,4 @@ rm -f %{buildroot}%{rlibdir}/R.css
 %{rlibdir}/%{packname}/R
 %{rlibdir}/%{packname}/data
 %{rlibdir}/%{packname}/help
+
