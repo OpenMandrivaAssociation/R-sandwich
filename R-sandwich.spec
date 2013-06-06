@@ -2,24 +2,30 @@
 %global packname  sandwich
 %global rlibdir  %{_libdir}/R/library
 
+%define debug_package %{nil}
+
 Name:             R-%{packname}
-Version:          2.2_9
-Release:          2
+Version:          2.2.10
+Release:          1
 Summary:          Robust Covariance Matrix Estimators
 Group:            Sciences/Mathematics
 License:          GPL-2
 URL:              http://cran.r-project.org/web/packages/%{packname}/index.html
-Source0:          http://cran.r-project.org/src/contrib/%{packname}_2.2-9.tar.gz
-Requires:         R-stats R-zoo R-stats R-car R-lmtest R-survival R-MASS
+Source0:          http://cran.r-project.org/src/contrib/sandwich_2.2-10.tar.gz
+Requires:         R-stats R-zoo R-stats
+%if %{with bootstrap}
+Requires:         R-car R-lmtest R-survival R-MASS R-scatterplot3d
+%else
+Requires:         R-car R-lmtest R-strucchange R-AER R-survival R-MASS
 Requires:         R-scatterplot3d
-%if %{without bootstrap}
-Requires:         R-strucchange R-AER
 %endif
-BuildRequires:    R-devel Rmath-devel texlive-collection-latex
-BuildRequires:    R-stats R-zoo R-stats R-car R-lmtest R-survival R-MASS
-BuildRequires:     R-scatterplot3d
-%if %{without bootstrap}
-BuildRequires:    R-strucchange R-AER
+BuildRequires:    R-devel Rmath-devel texlive-collection-latex R-stats R-zoo
+BuildRequires:    R-stats
+%if %{with bootstrap}
+BuildRequires:    R-car R-lmtest R-survival R-MASS R-scatterplot3d
+%else
+BuildRequires:    R-car R-lmtest R-strucchange R-AER R-survival R-MASS
+BuildRequires:    R-scatterplot3d
 %endif
 
 %description
@@ -55,3 +61,16 @@ rm -f %{buildroot}%{rlibdir}/R.css
 %{rlibdir}/%{packname}/R
 %{rlibdir}/%{packname}/data
 %{rlibdir}/%{packname}/help
+
+
+%changelog
+* Tue Feb 21 2012 Paulo Andrade <pcpa@mandriva.com.br> 2.2_9-2
++ Revision: 778375
+- Rebuild with proper dependencies
+
+* Sun Feb 19 2012 Paulo Andrade <pcpa@mandriva.com.br> 2.2_9-1
++ Revision: 777231
+- Import R-sandwich
+- Import R-sandwich
+
+
