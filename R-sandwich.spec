@@ -10,7 +10,7 @@ Release:          2
 Summary:          Robust Covariance Matrix Estimators
 Group:            Sciences/Mathematics
 License:          GPL-2
-URL:              http://cran.r-project.org/web/packages/%{packname}/index.html
+URL:              https://cran.r-project.org/web/packages/%{packname}/index.html
 Source0:          http://cran.r-project.org/src/contrib/sandwich_2.2-10.tar.gz
 Requires:         R-stats R-zoo R-stats
 %if %{with bootstrap}
